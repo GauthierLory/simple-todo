@@ -1,23 +1,18 @@
 import React, { useState,useRef } from 'react'
-import TodoList from './TodoList'
+import TodoList from './TodoList';
+import uuidv4 from 'uuid/dist/v4';
 
 function App() {
 
   const todoNameRef = useRef()
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      name: "test 1",
-      complete: false
-    }
-  ])
+  const [todos, setTodos] = useState([])
 
   function HandleAddtodo(e){
     const name = todoNameRef.current.value
     if(name === '') return 
     setTodos(prevTodos => {
       return [...prevTodos,{
-        id: 1,
+        id: uuidv4(),
         name: name,
         complete: false
       }]
